@@ -1,0 +1,5 @@
+[deps]
+LifeContingencies = "c8f0d631-89cd-4a1f-93d0-7542c3692561"
+MortalityTables = "4780e19d-04b9-53dc-86c2-9e9aa59b5a12"
+OffsetArrays = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
+Yields = "d7e99b2f-e7f3-4d9e-9f01-2338fc023ad3"
