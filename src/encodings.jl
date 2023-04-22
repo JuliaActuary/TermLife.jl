@@ -1,4 +1,5 @@
 using StructArrays
+using DataFrames
 
 struct ModelPoint
     mortality_index::Int
@@ -15,7 +16,6 @@ struct LapseEncodedModelPoint
     encoded_premiummode::Int
     encoded_premiumjump::Int
 end
-
 
 function encode(modelpoint::StructArray{ModelPoint})::StructArray{LapseEncodedModelPoint}
 
@@ -137,7 +137,7 @@ t10_rga = T10_RGA(
     ),
 )
 
-function glm_summand(glm_factor::NumericalPredictor, x::Int)
+function glm_summand(glm_factor::NumericalPredictor, x::Number)
     return glm_factor.coef * x
 end
 
@@ -167,7 +167,7 @@ function glm_prediction(glm_model::T10_RGA, encoded_modelpoints::DataFrame)
     return glm_prediction(glm_model, StructArray(encoded_modelpoints))
 end
 
-mps = StructArray{ModelPoint}((
+mps_test = StructArray{ModelPoint}((
     mortality_index=[3300],
     issue_age=[45],
     face_amount=[300000],
@@ -175,7 +175,7 @@ mps = StructArray{ModelPoint}((
     premium_jump=[9.0]
 ))
 
-mps_encoded = encode(mps)
+mps_encoded_test = encode(mps_test)
 
-glm_prediction(t10_rga, mps_encoded)
+glm_prediction_test() = glm_prediction(t10_rga, mps_encoded_test)
 
