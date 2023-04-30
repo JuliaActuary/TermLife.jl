@@ -1,7 +1,6 @@
-using TermLife: TermLife as tl
+using TermLife
 using Test
 
 @testset "TermLife.jl" begin
-    @test round(tl.glm_prediction_test()[1], digits=3) == .912
-    # Write your tests here.
+    include("simulation.jl")
 end

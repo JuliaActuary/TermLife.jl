@@ -4,8 +4,8 @@ end
 
 function simulate()
     month_ranges = get_month_ranges(Date(2020,1,1), Date(2020,12,31))
-    for (from, to, timestep) in month_ranges
-        duration = (timestep - 1) ÷ 12
+    for (; from, to, policy_timestep) in month_ranges
+        duration = (policy_timestep - 1) ÷ 12
         if rand() < get_mortality_over_range(from, to, .1)
             return 1
         end
