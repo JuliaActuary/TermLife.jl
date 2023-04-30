@@ -7,7 +7,7 @@ using PrecompileTools
 include("simulation.jl")
 
 @compile_workload begin
-  model = SimulationModel(1e-1)
+  model = SimulationModel(1e-1, 1e-1)
   from = Date(2020, 1)
   policies = Policy.(rand((from - Month(5)):Day(1):(from + Month(5)), 100))
   simulate!(policies, from, Month(40), model)
